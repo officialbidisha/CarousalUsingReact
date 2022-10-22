@@ -1,0 +1,13 @@
+.carousal{
+    overflow: hidden;
+}
+
+.inner{
+    white-space: nowrap;
+    transition: transform 0.3s;
+}
+.indicators{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
