@@ -27,7 +27,7 @@ const Carousal = (props) => {
     }
 
     let _slides = [];
-    let activeIn = newIndex+1;
+    let activeIn = newIndex;
     // We're at the last slide.
 
     if (activeIn === card.length - 1)
@@ -37,7 +37,7 @@ const Carousal = (props) => {
     // Create an array of the previous last slide, and the next two slides that follow it.
     else _slides = card.slice(activeIn - 1, activeIn + 2);
 
-    //  console.log("Slides" , _slides);
+    console.log("Slides" , _slides);
     setSlides(_slides);
     setActiveIndex(newIndex);
   };
