@@ -4,8 +4,9 @@
     align-items: center;
     height: 300px;
     background-color: brown;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat:repeat-x;
+
 }
 
 .avatar-image {
@@ -14,8 +15,11 @@
     border-radius: 50%;
 }
 .text {
-    color: pink;
+    color: #c2ffc0;
     font-size: 16px;
+    background-color: #76435b;
+    padding: 10px 15px;
+    font-weight: 500;
 }
 break {
     flex-basis: 100%;

@@ -6,11 +6,17 @@ const Carousal = (props) => {
    * Props
    */
   const { card } = props;
+  const firstSlide = card[0];
+  const secondSlide = card[1];
+  const lastSlide = card[card.length - 1];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const [slides, setSlides] = useState([card[0], card[1], card[2]]);
 
   /**
    * States
    */
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isSwipingPaused, setIsSwipingPaused] = useState(false);
 
   const updateIndex = (newIndex) => {
@@ -19,6 +25,20 @@ const Carousal = (props) => {
     } else if (newIndex >= card.length) {
       newIndex = 0;
     }
+
+    let _slides = [];
+    let activeIn = newIndex+1;
+    // We're at the last slide.
+
+    if (activeIn === card.length - 1)
+      _slides = [card[card.length - 2], lastSlide, firstSlide];
+    // We're back at the first slide. Just reset to how it was on initial render
+    else if (activeIn === 0) _slides = [lastSlide, firstSlide, secondSlide];
+    // Create an array of the previous last slide, and the next two slides that follow it.
+    else _slides = card.slice(activeIn - 1, activeIn + 2);
+
+    //  console.log("Slides" , _slides);
+    setSlides(_slides);
     setActiveIndex(newIndex);
   };
 
@@ -27,7 +47,7 @@ const Carousal = (props) => {
       if (!isSwipingPaused) {
         updateIndex(activeIndex + 1);
       }
-    }, 1000);
+    }, 3000);
     return () => {
       if (interval) {
         clearInterval(interval);
@@ -43,17 +63,17 @@ const Carousal = (props) => {
     >
       <div
         className="inner"
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        style={{ transform: `translateX(-${slides[1]* 100}%)` }}
       >
-        {card.map((child) => (
-          <Fragment key={child.id}>
+        {slides.map((child, index) =>  (
+          <Fragment key={child.id +1 }>
             <CarousalItem
               item={child}
               width="100%"
-              key={child.id}
             ></CarousalItem>
           </Fragment>
         ))}
+      
       </div>
       <div className="indicators">
         <button
@@ -64,9 +84,7 @@ const Carousal = (props) => {
         >
           Prev
         </button>
-        {
-            <p>{activeIndex}</p>
-        }
+        {<p>{activeIndex}</p>}
         <button
           className="next-button"
           onClick={(e) => {
