@@ -6,13 +6,13 @@ const Carousal = (props) => {
    * Props
    */
   const { card } = props;
-  const firstSlide = card[0];
-  const secondSlide = card[1];
-  const lastSlide = card[card.length - 1];
+  // const firstSlide = card[0];
+  // const secondSlide = card[1];
+  // const lastSlide = card[card.length - 1];
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const [slides, setSlides] = useState([card[0], card[1], card[2]]);
+  // const [slides, setSlides] = useState([card[0], card[1], card[2]]);
 
   /**
    * States
@@ -26,19 +26,19 @@ const Carousal = (props) => {
       newIndex = 0;
     }
 
-    let _slides = [];
-    let activeIn = newIndex;
-    // We're at the last slide.
+    // let _slides = [];
+    // let activeIn = newIndex;
+    // // We're at the last slide.
 
-    if (activeIn === card.length - 1)
-      _slides = [card[card.length - 2], lastSlide, firstSlide];
-    // We're back at the first slide. Just reset to how it was on initial render
-    else if (activeIn === 0) _slides = [lastSlide, firstSlide, secondSlide];
-    // Create an array of the previous last slide, and the next two slides that follow it.
-    else _slides = card.slice(activeIn - 1, activeIn + 2);
+    // if (activeIn === card.length - 1)
+    //   _slides = [card[card.length - 2], lastSlide, firstSlide];
+    // // We're back at the first slide. Just reset to how it was on initial render
+    // else if (activeIn === 0) _slides = [lastSlide, firstSlide, secondSlide];
+    // // Create an array of the previous last slide, and the next two slides that follow it.
+    // else _slides = card.slice(activeIn - 1, activeIn + 2);
 
-    console.log("Slides" , _slides);
-    setSlides(_slides);
+    // console.log("Slides" , _slides);
+    // setSlides(_slides);
     setActiveIndex(newIndex);
   };
 
@@ -63,9 +63,9 @@ const Carousal = (props) => {
     >
       <div
         className="inner"
-        style={{ transform: `translateX(-${slides[1]* 100}%)` }}
+        style={{ transform: `translateX(-${activeIndex* 100}%)` }}
       >
-        {slides.map((child, index) =>  (
+        {card.map((child, index) =>  (
           <Fragment key={child.id +1 }>
             <CarousalItem
               item={child}

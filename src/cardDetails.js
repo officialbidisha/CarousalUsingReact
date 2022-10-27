@@ -55,5 +55,22 @@ export const cardDetails = [
       content: 'Tailwind Templates are here! 🎉',
       href: 'https://twitter.com/mannupaaji',
     },
+    {
+      id: 7,
+      name: 'Manu Arora',
+      avatar: 'https://images.unsplash.com/photo-1561703142-b883827407ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+      content:
+        'Tailwind cards are awesome. Click on this tile to visit my Twitter profile. 😉',
+      href: 'https://twitter.com/mannupaaji/status/1542486005403746305',
+    },
+    {
+      id: 8,
+      name: 'Elon Musk',
+      avatar:
+        'https://images.unsplash.com/photo-1539346254710-b6d86e095035?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80',
+      content: 'We’re changing Starlink’s default wifi name to Stinky',
+      href: 'https://twitter.com/mannupaaji',
+    },
+    
   ];
   
