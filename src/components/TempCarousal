@@ -46,4 +46,23 @@ const TempCarousal = (props) => {
     </div>
   );
 };
+
+/**
+  .carousal-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: red;
+  padding: 10px;
+}
+
+.carousal-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+  width: 100%;
+  min-width: 100%;
+}
+
+*/
 export default TempCarousal;
