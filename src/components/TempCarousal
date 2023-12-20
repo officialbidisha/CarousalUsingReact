@@ -1,0 +1,49 @@
+import "./TempCarousal.css";
+import { useEffect, useState } from "react";
+const TempCarousal = (props) => {
+  const { cardLength } = props;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      let newIndex = activeIndex + 1;
+      if (newIndex >= cardLength) {
+        newIndex = 0;
+      }
+      if (newIndex < 0) {
+        newIndex = cardLength - 1;
+      }
+      setActiveIndex(newIndex);
+      console.log("i", activeIndex);
+    }, 3000);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  });
+
+  return (
+    <div className="carousal-container">
+      <div
+        className="carousal-item"
+        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+      >
+        <h1>Item1</h1>
+      </div>
+      <div
+        className="carousal-item"
+        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+      >
+        <h1>Item2</h1>
+      </div>
+      <div
+        className="carousal-item"
+        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+      >
+        <h1>Item3</h1>
+      </div>
+    </div>
+  );
+};
+export default TempCarousal;
